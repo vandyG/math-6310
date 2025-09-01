@@ -1,0 +1,141 @@
+\documentclass{amsart}[11pt]
+\usepackage[utf8]{inputenc}
+
+\pagestyle{plain}
+
+\usepackage{hyperref}
+%\usepackage{tablefootnote}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{amsthm}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{float}
+\usepackage{bbm}
+\usepackage{amsmath}
+\usepackage{comment}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{ulem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[lined,boxed,commentsnumbered]{algorithm2e}
+\usepackage{fourier}
+\usepackage{multicol}
+\usepackage{soul}
+\allowdisplaybreaks
+
+\hypersetup{
+	colorlinks,
+	citecolor=blue,
+	filecolor=blue,
+	linkcolor=blue,
+	urlcolor=blue,
+	%hyperfootnotes=false
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lem}{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{thmnum}{Theorem}
+\renewcommand{\thethmnum}{\Alph{thmnum}}
+\newtheorem{propnum}{Proposition}
+\renewcommand{\thepropnum}{\Alph{propnum}}
+\newtheorem{cornum}{Corollary}
+\renewcommand{\thecornum}{\Alph{cornum}}
+
+\newtheorem*{theoremos}{Theorem}
+\newtheorem*{prop}{Proposition}
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{question}{Question}
+\newtheorem{problem}{Problem}
+\newtheorem{solution}{Solution}
+\newtheorem{experiment}{Experiment}
+\newtheorem{remark}[theorem]{Remark}
+
+% % % % % % % % % % %our macros % % % % % % % % % % % % % % %
+\newcommand{\esssup}{{\mathrm{ess}\sup}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\Shah}{{\makebox[2.3ex][s]{$\sqcup$\hspace{-0.15em}\hfill $\sqcup$}  }}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\bc}{\textbf{c}}
+\newcommand{\Wcp}{{W_0(L^p)}}
+\newcommand{\lsp}{{\boldsymbol\ell}}
+\newcommand{\Wco}{{W_0(L^1)}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand {\D} {\mathbb D}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\sspan}{\textnormal{span}}
+\newcommand{\bracket}[1]{\left\langle#1\right\rangle}
+\newcommand{\col}{\textnormal{Col}}
+\newcommand{\row}{\textnormal{Row}}
+\newcommand{\rank}{\textnormal{rank}}
+\newcommand{\diag}{\textnormal{diag}}
+\newcommand{\tr}{\textnormal{tr}}
+\newcommand{\fro}{\textnormal{F}}
+\newcommand{\rw}{\textnormal{rw}}
+\newcommand{\sym}{\textnormal{sym}}
+\newcommand{\eps}{\varepsilon}
+
+\allowdisplaybreaks
+
+\title{MATH 6310 (Fall 2025) Homework Solutions}
+\author{Vandit Goel\\\textbf{Updated:} Wednesday  3 September, 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Linear Algebra Problems}
+
+\begin{problem}
+If $A\in\R^{n\times n}$ is symmetric, invertible, and has spectral decomposition $A=V\Lambda V^{-1}$, give (with proof) a formula for $A^{-1}$?
+
+\begin{solution}
+Let $A \in \mathbb{R}^{n \times n}$ be symmetric and invertible, with spectral decomposition
+\[
+A = V \Lambda V^{-1},
+\]
+where $V$ is an orthogonal matrix ($V^{-1} = V^\top$) and $\Lambda$ is diagonal.
+
+\vspace{\baselineskip}
+\noindent To find $A^{-1}$, we use the property that for invertible matrices:
+\begin{align*}
+	(A)^{-1} &= (V \Lambda V^{-1})^{-1} \\
+	&= (V^{-1})^{-1}\Lambda^{-1} V^{-1} \\
+	&= V\Lambda^{-1} V^{-1}
+\end{align*}
+Thus, the inverse is given by
+\[
+A^{-1} = V \Lambda^{-1} V^{-1}.
+\]
+\end{solution}
+\end{problem}
+
+
+\end{document}
+
