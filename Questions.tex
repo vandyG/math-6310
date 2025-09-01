@@ -1,0 +1,506 @@
+\documentclass{amsart}[11pt]
+\usepackage[utf8]{inputenc}
+
+\pagestyle{plain}
+
+\usepackage{hyperref}
+%\usepackage{tablefootnote}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{amsthm}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{float}
+\usepackage{bbm}
+\usepackage{amsmath}
+\usepackage{comment}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{ulem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[lined,boxed,commentsnumbered]{algorithm2e}
+\usepackage{fourier}
+\usepackage{multicol}
+\usepackage{soul}
+\allowdisplaybreaks
+
+\hypersetup{
+	colorlinks,
+	citecolor=blue,
+	filecolor=blue,
+	linkcolor=blue,
+	urlcolor=blue,
+	%hyperfootnotes=false
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lem}{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{thmnum}{Theorem}
+\renewcommand{\thethmnum}{\Alph{thmnum}}
+\newtheorem{propnum}{Proposition}
+\renewcommand{\thepropnum}{\Alph{propnum}}
+\newtheorem{cornum}{Corollary}
+\renewcommand{\thecornum}{\Alph{cornum}}
+
+\newtheorem*{theoremos}{Theorem}
+\newtheorem*{prop}{Proposition}
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{question}{Question}
+\newtheorem{problem}{Problem}
+\newtheorem{experiment}{Experiment}
+\newtheorem{remark}[theorem]{Remark}
+
+% % % % % % % % % % %our macros % % % % % % % % % % % % % % %
+\newcommand{\esssup}{{\mathrm{ess}\sup}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\Shah}{{\makebox[2.3ex][s]{$\sqcup$\hspace{-0.15em}\hfill $\sqcup$}  }}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\bc}{\textbf{c}}
+\newcommand{\Wcp}{{W_0(L^p)}}
+\newcommand{\lsp}{{\boldsymbol\ell}}
+\newcommand{\Wco}{{W_0(L^1)}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand {\D} {\mathbb D}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\sspan}{\textnormal{span}}
+\newcommand{\bracket}[1]{\left\langle#1\right\rangle}
+\newcommand{\col}{\textnormal{Col}}
+\newcommand{\row}{\textnormal{Row}}
+\newcommand{\rank}{\textnormal{rank}}
+\newcommand{\diag}{\textnormal{diag}}
+\newcommand{\tr}{\textnormal{tr}}
+\newcommand{\fro}{\textnormal{F}}
+\newcommand{\rw}{\textnormal{rw}}
+\newcommand{\sym}{\textnormal{sym}}
+\newcommand{\eps}{\varepsilon}
+
+\allowdisplaybreaks
+
+\title{MATH 6310 (Fall 2025) Homework Problem List}
+\author{Instructor: Keaton Hamm\\\textbf{DUE:} Wednesday  3 September, 2025 and every 2 weeks after}
+
+\begin{document}
+
+\maketitle
+
+\begin{itemize}
+\item Every 2 weeks you will turn in a homework set of 5 problems. Please use the numbering here (which may change as some problems are added, so update them as needed).
+\item $\leq 2$ problems per set can be purely computational problems.
+\item Some problems are longer and will count as 2 problems. This will be denoted at the beginning of each problem.
+\item For $\leq 2$ problems per set, you can attend (or watch) a talk related to math of data science, and write a 1/2 page report on the talk. The report should include: the Title of the talk, the Speaker and their Affiliation, what the venue was (conference, seminar series, location, etc.). Your report should summarize the main content of the talk, and discuss how some aspect of the talk is related to something we have discussed in the course (or more broadly how it is related to mathematics of data science). Some sources for talks that are likely to have some relevance are the the One World MINDS Seminar \url{https://sites.google.com/view/minds-seminar/home}, the One World Math of Machine Learning Seminar \url{https://www.oneworldml.org/},  or our local Stat and Data Science Seminar \url{https://www.uta.edu/academics/schools-colleges/science/departments/division-data-science/events}.  If you find a seminar or talk that you think would be interesting for the whole class, feel free to email me and I will look at it, and if I think it is suitable will announce it to the class.
+\item You may turn in a \textit{single file} to Canvas with your solutions.  I urge you to try to use \LaTeX since you will be using it for writing papers and your dissertation later. 
+\item If you work other student(s), indicate that you did so by giving their name next to the problem or at the beginning of the assignment (you will \textit{not} be penalized for this, it is just to give credit where it is due)
+\item You may \textit{\textbf{not}} get or copy solutions from any external source including, but not limited to, online forums, apps, tutors, solutions manuals, other textbooks, generative AI (e.g., ChatGPT or other large language model), a future version of yourself, etc.
+\item Your solutions should be neatly written and contain sentences explaining the reasoning behind any formulas or answers given, including full proofs where appropriate.
+\item You may code in any language. You should turn in your code as well as the output of it along with any explanations answering the problem.
+\end{itemize}
+
+\section{Linear Algebra Problems}
+
+Throughout all of these problems, we will assume that eigenvalues and singular values are in \textit{descending order} ($\lambda_1\geq\lambda_2\geq\dots$, $\sigma_1\geq\sigma_2\geq\dots\geq0$).
+
+\begin{problem}
+If $A\in\R^{n\times n}$ is symmetric, invertible, and has spectral decomposition $A=V\Lambda V^{-1}$, give (with proof) a formula for $A^{-1}$?
+\end{problem}
+
+
+%\textit{Solution:} 
+%We claim that $A^{-1} = S\Lambda^{-1}S^{-1}$.  Note that
+%\[ S\Lambda^{-1}S^{-1}S\Lambda S^{-1} = S\Lambda^{-1}\Lambda S^{-1} = SS^{-1} = I.\]
+%Likewise
+%\[S\Lambda S^{-1}S\Lambda^{-1}S^{-1} = I, \]
+%and the claim is proven.
+
+%\begin{problem}
+%Suppose $A=S\Lambda S^{-1}$.  Write this as the sum of rank 1 matrices. (\textit{Hint:} multiply $S\Lambda$ first)
+%\end{problem}
+%
+%\textit{Solution:}
+%
+%By similar computation to that of Problem 1.4 in Homework 1, we have that
+%\[ S\Lambda = \begin{bmatrix} \lambda_1S_{:1} & \dots & \lambda_nS_{:n}\end{bmatrix}. \]
+%Now since $S^{-1} = S^\top$, we have by the outer product form of matrix multiplication
+%\[ S\Lambda S^\top = \sum_{i=1}^n \lambda_iS_{:i}S_{:i}^\top. \]
+
+%\section{Theory Problems}
+
+\begin{problem}
+\begin{enumerate}[(a)]
+    \item Prove that $\mathcal{N}(A^\top A)=\mathcal{N}(A)$
+    \item Prove that $\mathcal{N}(A)$ is orthogonal to $\row(A)$
+    \item How does $\mathcal{N}(AB)$ relate to $\mathcal{N}(A)$ and $\mathcal{N}(B)$? Prove any statements you claim.
+    \item Use Sylvester's Inequality to prove that if $A\in\R^{m\times r}$ and $B\in\R^{r\times n}$ have rank $r$, then $\rank(AB)=r$.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Prove that for any $A\in\R^{n\times n}$, $\tr(A) = \sum\lambda_i(A)$.
+\end{problem}
+
+\begin{problem}A symmetric matrix $A=A^\top$ has orthonormal eigenvectors $v_1,\dots,v_n$. Define the \textbf{Rayleigh quotient} of $A$ via:
+    \[ R(x):= \frac{\bracket{Ax,x}}{\bracket{x,x}}. \]
+    
+\begin{enumerate}[(a)]
+    \item Prove that \[\max_{x\in\R^n} R(x) = \lambda_1.\]
+    \item Now prove that $\lambda_2$ is the solution to the following constrained optimization problem
+    \[ \max_{x\in\R^n} R(x) \quad \textnormal{subject to} \quad \bracket{v_1,x}=0. \]
+    \item Similar to the previous part, under what constraints is $\lambda_3$ the solution to $\max R(x)$	?
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+ In class we proved (or will prove) the first equality in the following theorem.
+\begin{theorem}[Courant--Fischer Minimax Theorem]
+Let $A\in\R^{n\times n}$ be symmetric with eigenvalues $\lambda_1\geq\dots\geq\lambda_n$. Then
+\[\lambda_k = \max_{\substack{S\subset\R^n\\ \dim(S)=k}}\min_{x\in S}\frac{\bracket{Ax,x}}{\bracket{x,x}} = \min_{\substack{T\subset\R^n \\ \dim(T)=n-k+1}}\max_{x\in T}\frac{\bracket{Ax,x}}{\bracket{x,x}}.\]
+\end{theorem}
+Prove the second equality (by proving that the far right-hand side gives $\lambda_k$). This is a generalization of the Rayleigh quotient problem above.
+\end{problem}
+
+\begin{problem}[Convexity]
+Recall that a function $f:\R^n\to \R$ is \textit{convex} if $f(\tau x+(1-\tau)y)\leq \tau f(x)+(1-\tau)f(y)$ for every $x,y\in\R^n$ and every $\tau\in[0,1]$. 
+\begin{enumerate}[(a)]
+\item Prove that $f$ is convex if and only if $f(\sum_{i=1}^k\alpha_i x_i)\leq\sum_{i=1}^k\alpha_i f(x_i)$ for every set of $x_1,\dots,x_k\in\R^n$ and $\alpha_i\geq0$ with $\sum_{i=1}^k\alpha_i=1$.
+\item Prove that if $F(x_1,\dots,x_n) = (f(x_1),\dots,f(x_n))$ for some convex $f:\R\to\R$, then $F$ is convex.
+%\item Prove that the function $f:\R\to\R$ given by $f(x) = |x|^p$ is convex.
+\item Show that $F(x) = \|x\|_p$ is convex (you can argue this directly from norm properties, not necessarily using the parts above).
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Note: if $y = (y_1, \dots, y_n)\in\R^n$, then $\diag(y)$ is the $n\times n$ diagonal matrix with diagonal elements $y_1,\dots,y_n$. If $X\in\R^{m\times n}$, then $\diag(X)$ is a vector in $\R^{\min\{m,n\}}$ with entries $(X_{11},X_{22},\dots)$. A function $\Phi:\R^n\to\R_+$ is a \textit{symetric gauge function} if
+\begin{itemize}
+\item $\Phi$ is a norm
+\item $\Phi$ is permutation invariant ($\Phi(Px)=\Phi(x)$ for all permutation matrices $P$ and $x\in\R^n$)
+\item $\Phi$ is sign invariant ($\Phi(Dx) = \Phi(x)$ for every diagonal $D=\diag(\pm1,\dots,\pm1)$ and $x\in\R^n$)
+\item $\Phi$ is normalized so that $\Phi(1,0,\dots,0) = 1$.
+\end{itemize}
+Using the techniques in class that proved that Schatten $p$-norms were norms on $\R^{m\times n}$, prove the following.
+\begin{theorem}
+There is a one-to-one correspondence between symmetric gauge functions and unitarily invariant norms on $\R^{m\times n}$. In particular,
+\begin{enumerate}[(1)]
+\item Given a symmetric gauge function $\Phi:\R^n\to\R_+$, the function $\|\cdot\|_\Phi:\R^{m\times n}\to\R_+$ given by $\|A\|_\Phi = \Phi(\sigma_1(A),\dots,\sigma_{\max\{m,n\}}(A))$ is a unitarily invariant norm on $\R^{m\times n}$.
+\item Given a unitarily invariant norm $\|\cdot\|$ on $\R^{m\times n}$, the function $\Phi:\R^n\to\R$ defined by $\Phi(x) = \|\diag(x)\|$ is a symmetric gauge function on $\R^n$.
+\end{enumerate}
+\end{theorem}
+\end{problem}
+
+\begin{problem}
+In this problem, assume that $\Phi:\R^n\to\R^n$ is convex and permutation invariant. You do not need to assume that $\Phi$ is monotone.
+\begin{enumerate}[(a)]
+\item In class, we showed that $\Phi(x) \leq \sum_{i=1}^\ell \alpha_i\Phi(y) =:z$ (entrywise) for some $\alpha_i\geq0$ with $\sum_{i=1}^\ell\alpha_i=1$. Show that $z\prec \Phi(y)$.
+\item Show that if $\Phi(x) \leq z \prec \Phi(y)$, then $\Phi(x) \prec_w \Phi(y)$.
+\item Let $x,y\in\R^n$ such that $x\prec y$, and let $T_1$ be a T-transform such that \[(T_1 y)_i = \begin{cases} \tau y_1+(1-\tau)y_k, & i=1\\ (1-\tau)y_1+\tau y_k, & i=k \\ y_i, & \text{otherwise}.\end{cases}\] Show that $T_1 y\prec y$.
+\item If $T_1 y = \begin{bmatrix} x_1 \\ w\end{bmatrix}$, show that $\begin{bmatrix}x_2\\\vdots \\v_n\end{bmatrix} \prec w$.
+\item Complete the proof of the implication that $x\prec y \Rightarrow x = T_n\dots T_1 y$ for some T-transforms $T_n,\dots,T_1$.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}[Normal equations for least squares]
+Let $A\in\R^{m\times n}$ with $m\geq n$ and $b\in\R^n$.  Recall that a necessary condition for $\widehat{x}$ to be a minimizer of the function $f:\R^n\to\R$ given by
+\[f(x):=|Ax-b|^2 = \sum_{i=1}^m \left(\sum_{j=1}^n a_{ij}x_j-b_i \right)^2 \]
+is that 
+\[ \frac{\partial f}{\partial x_k} = \frac{\partial}{\partial x_k} \|Ax-b\|_2^2 = 0,\qquad k=1,\dots,n. \]
+\begin{enumerate}[(a)]
+    \item For a given $k$, compute the partial derivative above with respect to $x_k$.
+    \item Show that these constraints lead to the \textit{normal equations} $A^{\top}A\widehat{x}=A^{\top}b.$
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+A matrix $A\in\R^{n\times n}$ is \textit{strictly diagonally dominant (SDD)} if $|A_{ii}|>\sum_{j\neq i}|A_{ij}|$ for all $i\in[n]$. Prove that if $A$ is SDD then $A$ is invertible. (\textit{Hint:} Show that $0$ cannot be an eigenvalue of $A$ by mimicking the proof of the Ger\v{s}gorin circle theorem.)
+\end{problem}
+
+\section{Matrix Decomposition Problems}
+
+\begin{problem}[Alternate Proof of the Spectral Decomposition; \textit{Counts as 2 problems}]
+The aim is to prove that $A = V\Lambda V^\top$ for symmetric $A\in\R^{n\times n}$.
+\begin{enumerate}[(a)]
+\item Let $V$ be any subspace of $\R^n$ and $A\in\R^{n\times n}$ be symmetric. Prove that if $Ax\in V$ for every $x\in V$, then $Ay\in V^\perp$ for every $y\in V^\perp$.
+\item With the assumptions above, if $V$ is any nontrivial subspace of $\R^n$ (i.e., $V\neq \{0\}$) and $Ax\in V$ for every $x\in V$, prove that $V$ contains an eigenvector of $A$. (\textit{Hint:} Start with an orthonormal basis of $V$, say $\{u_1,\dots,u_k\}$. Write $A = UR$ for some $R\in\R^{k\times k}$. Show that $R$ is symmetric. Next, suppose $\lambda$ is an eigenvalue of $R$ with eigenvector $v$. Show that $w  = \sum v_ju_j$ is an eigenvector of $A$ with eigenvalue $\lambda$.)
+\item Prove the spectral theorem. (\textit{Hint:} Start with $\lambda_1, v_1$ the leading eigenvalue/vector of $A$ and let $V_1 = \sspan(v_1)$. Use the above lemmas to find an orthogonal eigenvector $v_2\perp v_1$. Iterate the argument to complete the proof.)
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Suppose $A\in\R^{m\times n}$ with SVD $A=U\Sigma V^\top$ and that $\rank(A)=k$.  Write $U$, $\Sigma$, and $V^\top$ in block form as follows
+\[ U = \begin{bmatrix} U_k & U_{m-k}\end{bmatrix},\quad \Sigma = \begin{bmatrix} \Sigma_k & 0\\0 & 0\end{bmatrix},\quad V^\top = \begin{bmatrix} V_k^\top \\\\ V_{n-k}^\top\end{bmatrix}, \]
+where $U_k$ contains the first $k$ left singular vectors, and $U_{m-k}$ contains the remainder, and similarly for $V_k$, and $\Sigma_k = \diag(\sigma_1,\dots,\sigma_k)$ is diagonal and contains all nonzero singular values of $A$.
+
+\begin{enumerate}[(a)]
+\item List the sizes of all of the submatrices involved in the expressions above (including the $0$ blocks in $\Sigma$)
+\item Multiply $U\Sigma V^\top$ using block matrix multiplication from above, and prove that $U\Sigma V^\top = U_k\Sigma_kV_k^\top$ (hence $A=U_k\Sigma_kV_k^\top$).
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Let $A\in\R^{m\times n}$ have SVD $A=U\Sigma V^\top$.
+\begin{enumerate}[(a)]
+\item If $A=U\Sigma V^\top$ is invertible, give a formula for $A^{-1}$ in terms of $U$, $\Sigma$ and $V$. Justify your answer.
+\item If $A=U\Sigma V^\top$, give a formula for $A^\top A$ and $AA^\top$. in terms of $U$, $\Sigma$, $V$. Justify your answer.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Let $A\in\R^{m\times n}$ have truncated SVD of order $k$ given by $A_k=U_k\Sigma_kV_k^{\top}$. 
+\begin{enumerate}[(a)]
+\item Give a formula for $A_kA_k^\top$ (make any simplifications you can)
+\item Give a formula for $A_k^\top A_k$ (make any simplifications you can)
+\item Interpret these formulas.
+\end{enumerate}
+\end{problem}
+
+%\begin{problem}
+%Prove the Eckhart--Young--Mirsky Theorem for the Frobenius norm.
+%\end{problem}
+
+\begin{problem}
+Recall that the definition of the Frobenius norm is \[\|A\|_{\fro}:=\left(\sum_{i=1}^m\sum_{j=1}^n|A_{ij}|^2\right)^\frac12.\]
+\begin{enumerate}[(a)]
+\item Prove that the Frobenius norm is unitarily invariant (i.e., $\|QA\|_{\fro} = \|AW\|_{\fro} = \|A\|_{\fro}$ for any orthogonal matrices $Q,W$). \item Prove that for any $A\in\R^{m\times n}$,
+ \[\|A\|_{\fro} = \left(\sum_{i=1}^{\rank(A)} \sigma_i^2\right)^\frac12.\]
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+Given a matrix $A\in\R^{m\times n}$, show that the Gram--Schmidt procedure on the columns of $A$ produces matrices $Q\in\R^{m\times n}$ and $R\in\R^{n\times n}$ with $Q$ having orthonormal columns and $R$ being upper triangular.
+
+Additionally, estimate the order of the number of flops required to compute the QR decomposition in this way.		
+\end{problem}
+
+\begin{problem}
+Let $v\in\R^n$ be a unit vector, and $H$ be its corresponding Householder reflector. 
+\begin{enumerate}[(a)]
+\item Show that $H^\top Hx = HH^\top x = x$ for all $x\in\R^n$
+\item Count the number of multiplications in the Householder reflector algorithm for computing QR decompositions.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}[CUR Decomposition]\label{PROB:CUREasy}
+Let $A\in\R^{m\times n}$, and $I\subset[m]$, $J\subset[n]$ with $|I|=|J|=k=\textnormal{rank}(A)$.  If $C=A(:,J)$, $R=A(I,:)$ and $U=A(I,J)$, prove that if $\rank(U)=k$, then $A=CU^{-1}R$.  (\textit{Hint:} First justify that one can write $A=CX$ for some unknown $X$. Next, write $R=P_IA$ where $P_I$ is a row selection matrix, and consider what happens to $A=CX$ upon multiplication by $P_I$.)
+
+\textbf{Note:} If you google this, you will find my published proof of it. Please try to do this from scratch using the hint above... 
+\end{problem}
+
+\begin{problem}[CUR Decomposition, general case]
+Let $A\in\R^{m\times n}$, and $I\subset[m]$, $J\subset[n]$ with $|I|=|J|\geq k=\textnormal{rank}(A)$.  If $C=A(:,J)$, $R=A(I,:)$ and $U=A(I,J)$, prove that if $\rank(U)=k$, then $A=CU^{\dagger}R$.  (\textit{Hint:} You will need to repeat a similar argument to that of Problem \ref{PROB:CUREasy} to show that a valid solution to $R = UX$ is $X=U^\dagger R$.)
+
+\textbf{Note:} If you google this, you will find my published proof of it. Please try to do this from scratch using the hint above... 
+\end{problem}
+
+
+\begin{problem}[\textit{Counts as 2 problems}]
+In the Power Method, 
+\begin{enumerate}[(a)]
+\item Show that
+\[\frac{r_k-\lambda_1}{\lambda_1} = \left(\frac{\lambda_2}{\lambda_1}\right)^kc_k\]
+for some bounded sequence $c_k$. (You may find it useful to use the fact that for any linear functional, $|\phi(x)|\leq C|x|$ for some $C$).
+\item Show that $r_{k+1}-\lambda_1 = (c+\delta_k)(r_k-\lambda_1)$ where $|c|<1$ and $\delta_k\to 0$, $k\to\infty$.  You may assume if necessary that $|\lambda_2|>|\lambda_3|$.
+\item Count the number of multiplications in the power method.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}\label{PROB:Pseudoinverse}
+Let $A\in\R^{m\times n}$ satisfy $\rank(A)=k$, and let $A=U\Sigma V^{\top}$ be its SVD, and let $A=U_k\Sigma_kV_k^{\top}$ be its compact SVD.	
+\begin{enumerate}[(a)]
+\item Prove that $AA^\dagger = U_kU_k^{\top}$
+\item Prove that $A^\dagger A = V_kV_k^{\top}$
+\item Given that $A^\dagger = V\Sigma^\dagger U^{\top}$, give (with proof) a formula for $A^\dagger$ as the sum of rank 1 matrices
+\end{enumerate}
+\end{problem}
+
+\begin{problem}\label{PROB:Pseudoinverse2}
+Let $A\in\R^{m\times n}$ Prove the following identities involving $A^\dagger\in\R^{n\times m}$, the Moore--Penrose pseudoinverse of $A$.	
+\begin{enumerate}[(a)]
+\item If $A$ has linearly independent columns, then $A^\dagger = (A^\top A)^{-1}A^\top$
+\item If $A$ has linearly independent rows, then $A^\dagger = A^\top(AA^\top)^{-1}$
+\item For every $A$, $(A^\top)^\dagger = (A^\dagger)^\top$
+\end{enumerate}
+\end{problem}
+
+\begin{problem}\label{PROB:Pseudoinverse3}
+Let $A\in\R^{m\times n}$ Prove the following identities involving $A^\dagger\in\R^{n\times m}$, the Moore--Penrose pseudoinverse of $A$.		
+\begin{enumerate}[(a)]
+\item $A = AA^\top(A^\dagger)^\top = (A^\dagger)^\top A^\top A$
+\item $A^\top = A^\top AA^\dagger = A^\dagger AA^\top$
+\end{enumerate}
+\end{problem}
+
+\begin{problem}\label{PROB:Pseudoinverse4}
+Using Problem \ref{PROB:Pseudoinverse3}, prove the following theorem. If $A\in\R^{m\times n}$ and $B\in\R^{n\times p}$, then $(AB)^\dagger = B^\dagger A^\dagger$ if and only if both of the following equations hold:
+\begin{equation}
+A^\dagger ABB^\top A^\top = BB^\top A^\top
+\end{equation}
+\begin{equation}
+BB^\dagger A^\top AB = A^\top AB.
+\end{equation}
+\end{problem}
+
+
+\begin{problem}
+Let $A\in\R^{m\times n}$, and let $R=A(I,:)$ be a fixed row submatrix of $A$.  Show that $AR^\dagger$ is a solution to
+\[\min_{X}\|A-XR\|_{S_p}\]
+for any Schatten $p$--norm.  (\textit{Hint:} Apply the corresponding theorem for column submatrices from the lecture to $A^\top$) 
+\end{problem}
+
+\begin{problem}
+\begin{enumerate}[(a)]
+\item Let $A = \begin{bmatrix} a_1 & a_2 & \dots a_n\end{bmatrix}$ (a row vector).  Give (with proof) a formula for $A^\dagger$. 
+\end{enumerate}
+
+Let $B = \begin{bmatrix} 1 & 1\\ 1 & 2\end{bmatrix}$, and let $C$ and $R$ be the first column and row of $B$, respectively.
+\begin{enumerate}
+\item[(b)] Compute $C^\dagger BR^\dagger$
+\item[(c)] Show that $C^\dagger BR^\dagger$ minimizes $\|B-CXR\|_{\fro}$ for all appropriately sized $X$
+\item[(d)] Show that $C^\dagger BR^\dagger$ is \textbf{not} a minimizer of $\|B-CXR\|_2$
+\end{enumerate}
+\end{problem}
+
+\section{Graph and Clustering Problems}
+
+\begin{problem}
+For $n>2$, let $C_n$ be the \textit{cycle} graph on $n$ vertices. That is, the vertices can be viewed as $n$ equally spaced points on the unit circle, and the edge set consists of edges $(1,2), (2,3), \dots (n-1,n), (n,1)$.  Assume that all edges have weight 1.
+
+\begin{enumerate}[(a)]
+\item Write the form of the adjacency (weight) matrix for $C_n$.  Use this to write the form of the unnormalized graph Laplacian of $C_n$ (given by $L=D-W$).
+\item Verify that if $\lambda_k = 2-2\cos(\frac{2\pi k}{n})$, and 
+\[ x_k = \begin{bmatrix}\sin\left(\frac{2\pi k(1)}{n}\right)\\\sin\left(\frac{2\pi k(2)}{n}\right)\\ \vdots \\ \sin\left(\frac{2\pi k(n)}{n}\right)\end{bmatrix},\qquad y_k = \begin{bmatrix}\cos\left(\frac{2\pi k(1)}{n}\right)\\\cos\left(\frac{2\pi k(2)}{n}\right)\\ \vdots \\ \cos\left(\frac{2\pi k(n)}{n}\right)\end{bmatrix}\]
+for $k=1,\dots,\frac{n}{2}$ (with the caveat that if $n$ is even, then we only have $y_{\frac{n}{2}}$ since $x_\frac{n}{2}=0$), then $(\lambda_k,x_k)$ and $(\lambda_k,y_k)$ are eigenvalue/eigenvector pairs for the graph Laplacian of $C_n$. (\textit{Hint}: You may find it easier to verify that $Lx_k=\lambda_kx_k$ coordinatewise).
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Given a graph $G$, and its associated random walk graph Laplacian given by $L_{\rw} = I-D^{-1}W$, state and prove a formula for $\bracket{L_{\textnormal{rw}}x,x}$ for arbitrary $x\in\R^n$.
+\end{problem}
+
+\begin{problem}
+From Lecture, we saw that the following is a relaxation of the RatioCut problem
+\begin{equation}\label{EQN:Relax}
+\min_{x\in\R^n}\bracket{Lx,x} \textnormal{ s.t. } \bracket{x,\mathbbm{1}}=0, \|x\|_2=\sqrt{n}.
+\end{equation}
+Show that \eqref{EQN:Relax} is solved by $v_{n-1}$, the $(n-1)$-st eigenvector of $L$.   (\textit{Hint:} realize this as a Rayleigh quotient and mimic your argument for maximizing Rayleigh quotients from previous homework. Also note that eigenvectors can be multiplied by constants and remain eigenvectors.) 
+\end{problem}
+
+\begin{problem}
+Given a graph $G=(V,E,w)$ and a partition $V = A_1\sqcup\dots\sqcup A_k$, let
+\[H_{ij}:=\begin{cases} \frac{1}{\sqrt{|A_j|}}, & v_i\in A_j\\ 0, & \textnormal{otherwise}.\end{cases}\]
+Thus $H\in\R^{n\times k}$. Show that \[\bracket{LH_{:j},H_{:j}} = \frac{\textnormal{cut}(A_j,A_j^C)}{|A_j|}.\]
+\end{problem}
+
+\section{Experimental Problems}
+
+\begin{problem}[Requires Programming]\label{PROB:GaussianSpectrum}
+Generate 100 matrices of size $100\times 100$ whose entries are random Gaussians (i.e., drawn from $\mathcal{N}(0,1)$).  For each matrix, compute its eigenvalues, and after all matrices are generated, plot all of the eigenvalues on one plot (note they will be complex in general).  What do you notice?  Try this experiment for different sizes of matrices; what do you notice?
+
+Your code must be turned in as an appendix at the end of your homework. In the space below this problem, you should put any figures you generate and your answers to the questions.
+\end{problem}
+
+\begin{problem}[Requires Programming]\label{PROB:RandomSpectrum}
+Repeat the process of Problem \ref{PROB:GaussianSpectrum} but for random matrices with entries drawn i.i.d. from some other distribution and write your conclusions. (Examples would be Uniform[0,1], Uniform[a,b] for other choices of $a, b\in\R$, Bernoulli $\{\pm1\}$ (with equal probability), $\beta$ distributions, but feel free to choose whatever you like).
+
+Your code must be turned in as an appendix at the end of your homework. In the space below this problem, you should put any figures you generate and your answers to the questions.
+\end{problem}
+
+\begin{problem}[Requires Programming]
+Load the file 'Yale{\_}Example.mat' from Canvas. The file contains a $192\times 168$ matrix with integer values between 0 and 255, and is a black and white image of a face.  For simplicity, call this matrix $A$.
+\begin{enumerate}
+\item For each $\alpha \in \{1, 5, 10, 20, 50, 100\}$, uniformly randomly select $\alpha$ columns of $A$ to yield a column submatrix $C_\alpha=A(:,I_\alpha)$.  Compute $\|A-C_\alpha C_\alpha^\dagger A\|_2$ for each $\alpha$.
+\item Show the original image, and the image corresponding to the approximation $C_\alpha C_\alpha^\dagger A$ for each $\alpha$. Comment on the visual accuracy of the approximations.  How does visual accuracy compare to the numerical accuracy?
+\item For comparison, compute the truncated SVD of order $\alpha$ for the same values of $\alpha$ (i.e., compute $U_\alpha\Sigma_\alpha V_\alpha^{\top}$).  Show the original image and its SVD approximations for each $\alpha$ and compute the corresponding numerical error $\|A-U_\alpha\Sigma_\alpha V_\alpha^{\top}\|_2$ for each $\alpha$.
+\item Compare the numerical errors for truncated SVD and column approximation and compare the visual accuracy of the two methods for similar parameters. (Note, for better visualization, you may combine all parts above and report your numerical results in a Table, and put the figures in two rows according to the $\alpha$ value so that they can be more easily compared)
+\end{enumerate}
+\end{problem}
+
+Example:
+
+\begin{table}[H]
+\begin{tabular}{|c||c|c|c|c|c|c|c|}
+\hline
+$\alpha$ & 1 & 2 & 5 & 10 & 20 & 50 & 100\\
+\hline
+Col Error & & & & & & & \\
+\hline
+SVD Error & & & & & & & \\
+\hline
+\end{tabular}\caption{Table of Errors}
+\end{table}
+
+\begin{figure}[ht]
+\centering
+\mbox{\includegraphics[width=.32\linewidth]{Yale_Example.png}} \hfill
+\mbox{\includegraphics[width=.32\linewidth]{Yale_Example.png}} \hfill
+\mbox{\includegraphics[width=.32\linewidth]{Yale_Example.png}} 
+
+%\vspace{-0.12in}
+\mbox{\includegraphics[width=.32\linewidth]{Yale_Example.png}} \hfill
+\mbox{\includegraphics[width=.32\linewidth]{Yale_Example.png}} \hfill
+\mbox{\includegraphics[width=.32\linewidth]{Yale_Example.png}} 
+
+\caption{Example \LaTeX code for including multiple figures.  These are all the same figure, so please to not forget to change the file names if you use this code.}  
+\vspace{-0.05in}
+\end{figure}
+
+\begin{problem}[Requires Programming]
+Implement the randomized SVD algorithm of Halko--Martinsson--Tropp by using random Gaussian matrices. Test the algorithm on random matrices of size $100\times 100$ with rank parameter $k=10$ and various oversampling parameters. What do you notice?
+\end{problem}
+
+\begin{problem}[Requires Programming; \textit{worth 2 problems}]
+Generate random rank 10 matrices of size $100\times 100$. Randomly sample $n$ columns and rows for each $n\in\{5,10,20,50\}$ uniformly and compute the errors $\|A-CU^\dagger R\|_2$ and $\|A-CC^\dagger AR^\dagger R\|_2$.
+
+Repeat this many times and take average error. 
+
+Repeat this for column/row length distributions, and leverage score distributions with leverage score rank parameter $k=10$.
+
+What do you conclude?
+\end{problem}
+
+\begin{problem}[Requires Programming]
+Let $H_{ij} = \frac{1}{i+j-1}$ for $i,j=1,\dots,100$. Consider the CUR decomposition error in the spectral norm for this matrix for fixed target rank $50$ and various numbers of columns and rows sampled. What do you notice?
+\end{problem}
+
+\begin{problem}[Requires Programming]
+For each $\Delta\in\{0.1,0.2,\dots,1\}$, generate 1,000 random data as follows
+\[x_i = \begin{bmatrix} -\frac{\Delta}{2}-1\\ 0 \end{bmatrix} + r_i,\qquad y_i = \begin{bmatrix} \frac{\Delta}{2} + 1\\ 0\end{bmatrix} + t_i\]
+where $r_i,t_i$ are drawn independently from the uniform distribution on the unit disk in $\R^2$.
+
+(Note that $x_i$ and $y_i$ are in $\R^2$, and this data consists of points in two disks centered at $(-\frac{\Delta}{2}-1,0)$ and $(\frac{\Delta}{2}+1,0)$ which are separated by a distance of $\Delta$.  This is called the \textit{stochastic ball model}.)
+
+\begin{enumerate}[(a)]
+\item Plot $x_i$ and $y_i$ for $\Delta=0.1$ to visualize the data.
+\item For each $\Delta$, run $k$--means (with $k=2$) on the data matrix $A = \begin{bmatrix} x_1 & \dots & x_{1000} & y_1 & \dots & y_{1000}\end{bmatrix}$ using random initialization and report the accuracy. (Initialization should be a parameter that can be changed in either Matlab or Python)
+\item Repeat part (b) using $k$--means$++$ initialization and compare the results
+\item Repeat part (b) using Spectral Clustering with the kNN graph for $k\in\{2,10\}$ (this $k$ is the number of neighbors, but the number of clusters should still be 2).  
+\item Fix $\Delta = 0.2$, and use Spectral Clustering with the $\eps$--neighborhood graph for $\eps\in\{0.1,0.2,03\}$.  Report the accuracy for each $\eps$ and discuss your results.
+\item Summarize the results from all previous parts and discuss what you found worked, what did not, and how the parameters affect the clustering performance.
+\end{enumerate}
+\end{problem}
+
+\end{document}
+
