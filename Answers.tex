@@ -44,7 +44,7 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{definition}[theorem]{Definition}
 
-\newtheorem{claim}[theorem]{Claim}
+\newtheorem*{claim}{Claim}
 \newtheorem{thmnum}{Theorem}
 \renewcommand{\thethmnum}{\Alph{thmnum}}
 \newtheorem{propnum}{Proposition}
@@ -193,6 +193,53 @@ A^{-1} = V \Lambda^{-1} V^{-1}.
             Thus, we prove $\bracket{x,y} = 0$. 
             
             \noindent $\therefore$ $\mathcal{N}(A)$ is orthogonal to $\row(A)$ 
+        \end{proof}
+        \vspace{\baselineskip}
+        \item \begin{claim}[1]
+            \[ \mathcal{N}(B) \subseteq \mathcal{N}(AB)\]
+        \end{claim}
+        \begin{proof}
+            We know $\mathcal{N}(B):=\{x\in\R^n:Bx=0\}$. If $Bx=0$, then
+            \begin{align*}
+                Bx &= 0 \\
+                &\Rightarrow ABx = 0 \\
+                &\Rightarrow (AB)x = 0 \\
+                &\Rightarrow x \in \mathcal{N}(AB).
+            \end{align*}
+            Thus, this proves the nullspace of $B$ is a subspace of the nullspace of $AB$, i.e.
+            \[\mathcal{N}(B) \subseteq \mathcal{N}(AB)\tag{1}\]
+        \end{proof}
+        \begin{claim}[2]
+            $\mathcal{N}(AB)=\mathcal{N}(B) \leftrightarrow \operatorname{rank}(AB)=\operatorname{rank}(B)$ 
+        \end{claim}
+        \begin{proof}
+            By the Rank-nullity theorem, Let $Z\in\R^{m\times n}$.  Then
+            \[ \dim(\mathcal{N}(Z))+\rank(Z) = n \]
+            Let $A\in \R^{m \times n}$, $B\in\R^{n \times p}$, $AB\in\R^{m\times p}$ and $\operatorname{rank}(AB)=\operatorname{rank}(B)$. Then
+            \begin{align*}
+                \dim(\mathcal{N}(AB)) + \operatorname{rank}(AB) &= \dim(\mathcal{N}(B)) + \operatorname{rank}(B) \\
+                \Rightarrow\dim(\mathcal{N}(AB))&=\dim(\mathcal{N}(B))
+                \tag{2}
+            \end{align*}
+            From (1) and (2) we can conclude,
+            \[\mathcal{N}(AB)=\mathcal{N}(B)\]
+        \end{proof} 
+        \vspace{\baselineskip}
+        \item \begin{proof}
+            Given $A\in\R^{m\times r}$, $B\in\R^{r\times n}$ and $\operatorname{rank}(A) = \operatorname{rank}(B)=r$
+
+            \noindent We know, $\rank(AB) \leq \min\{\rank(A), \rank(B)\}$. Then
+            \[\rank(AB) \leq \min\{r, r\}\]
+            \[\Rightarrow\rank(AB) \leq r\tag{1}\]
+            By \textbf{Sylvester's Inequality:} If $A \in \R^{m\times r}, B \in \R^{r\times n}$, then 
+            \begin{align*}
+                &\rank(A) + \rank(B) \leq \rank(AB) + r \\
+                &\Rightarrow r + r \leq \rank(AB) + r \\
+                &\Rightarrow \rank(AB) \geq r \tag{2}
+            \end{align*}
+
+            By (1) and (2) we prove,
+            \[\rank(AB) = r\]
         \end{proof}
     \end{enumerate}
 \end{solution}
