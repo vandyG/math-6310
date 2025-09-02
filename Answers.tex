@@ -124,8 +124,11 @@ where $V$ is an orthogonal matrix ($V^{-1} = V^\top$) and $\Lambda$ is diagonal.
 
 \vspace{\baselineskip}
 \noindent To find $A^{-1}$, we use the property that for invertible matrices:
+\[
+(XYZ)^{-1} = Z^{-1} Y^{-1} X^{-1}
+\]
 \begin{align*}
-	(A)^{-1} &= (V \Lambda V^{-1})^{-1} \\
+	\Rightarrow(A)^{-1} &= (V \Lambda V^{-1})^{-1} \\
 	&= (V^{-1})^{-1}\Lambda^{-1} V^{-1} \\
 	&= V\Lambda^{-1} V^{-1}
 \end{align*}
@@ -146,7 +149,51 @@ A^{-1} = V \Lambda^{-1} V^{-1}.
 \end{enumerate}
 \begin{solution}
     \begin{enumerate}[(a)]
-    \item 
+        \item \begin{proof}
+            Given $A\in\R^{m\times n}$, its \textbf{nullspace} is, 
+            \[ \mathcal{N}(A):=\{x\in\R^n:Ax=0\} \]
+            If $x\in\mathcal{N}(A)$, then
+            \[A^\top(Ax)=A^\top0=0\]
+            \[A^\top(Ax)=0\Leftrightarrow (A^\top A)x=0\]
+            \[\Rightarrow x\in\mathcal{N}(A^\top A)\]
+            This also shows that $\mathcal{N}(A) \subseteq \mathcal{N}(A^\top A)$
+
+            \vspace{\baselineskip}
+            \noindent If $x\in\mathcal{N}(A^\top A)$, then
+            \[A^\top Ax=0\]
+            Multiplying both sides by $x^\top$
+            \[x^\top A^\top Ax=0\]
+            \[\Rightarrow (Ax)^\top Ax=0\]
+            \[\Rightarrow \norm{Ax}_2^2=0\]
+            \[\Rightarrow Ax=0\] 
+            \[\Rightarrow x\in\mathcal{N}(A)\] 
+            This also shows that $\mathcal{N}(A^\top A) \subseteq \mathcal{N}(A) $
+            
+            \noindent Since both inclusions hold, we can conclude $\boldsymbol{\mathcal{N}(A^\top A)=\mathcal{N}(A)}$.
+        \end{proof}
+        \vspace{\baselineskip}
+        \item \begin{claim}
+        For any $x\in\mathcal{N}(A)$ and $y\in \row(A)$, $\mathcal{N}(A)$ is orthogonal to $\row(A)$ if
+        \[\bracket{x,y}=0\]
+        \end{claim}
+        \begin{proof}
+            We know $\row(A) = \col(A^\top)$. Also, $y$ can be written as a linear combination of the rows of A, 
+            \[y=A^\top z : z\in\R^n\]
+            Computing the dot product $\bracket{x,y} = 0$,. Hence, 
+            \begin{align*}
+            	\bracket{x,y} &= y^\top x \\
+                &= (A^\top z)^\top x \\
+                &= z^\top Ax \\
+            \end{align*}
+            We know $\mathcal{N}(A):=\{x\in\R^n:Ax=0\}$
+            \begin{align*}
+                &= z^\top 0 \\
+                &= 0 
+            \end{align*}
+            Thus, we prove $\bracket{x,y} = 0$. 
+            
+            \noindent $\therefore$ $\mathcal{N}(A)$ is orthogonal to $\row(A)$ 
+        \end{proof}
     \end{enumerate}
 \end{solution}
 \end{problem}
