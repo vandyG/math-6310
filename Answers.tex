@@ -58,7 +58,7 @@
 \newtheorem{example}[theorem]{Example}
 \newtheorem{question}{Question}
 \newtheorem*{problem}{Problem}
-\newtheorem{solution}{Solution}
+\newtheorem*{solution}{Solution}
 \newtheorem{experiment}{Experiment}
 \newtheorem{remark}[theorem]{Remark}
 
@@ -245,6 +245,46 @@ A^{-1} = V \Lambda^{-1} V^{-1}.
 \end{solution}
 \end{problem}
 
+\begin{problem}[13]
+Let $A\in\R^{m\times n}$ have SVD $A=U\Sigma V^\top$.
+\begin{enumerate}[(a)]
+\item If $A=U\Sigma V^\top$ is invertible, give a formula for $A^{-1}$ in terms of $U$, $\Sigma$ and $V$. Justify your answer.
+\item If $A=U\Sigma V^\top$, give a formula for $A^\top A$ and $AA^\top$. in terms of $U$, $\Sigma$, $V$. Justify your answer.
+\end{enumerate}
+\begin{solution}
+    \begin{enumerate}[(a)]
+        \item If $A=U\Sigma V^\top$ then
+        \[A^{-1}=(U\Sigma V^\top)^{-1}=(V^\top)^{-1}\Sigma^{-1}U^{-1}\]
+        For orthogoal matrices the inverse is the same as transpose. Because
+        \[QQ^\top=I \]
+        \[\Rightarrow A^{-1}=V\Sigma^{-1}U^{\top}\]
+        \begin{proof}
+            Given $A=U\Sigma V^\top$, multiplying both sides by $A^{-1}$
+            \begin{align*}
+                A^{-1}A &= (V\Sigma^{-1}U^{\top})(U\Sigma V^\top) \\
+                A^{-1}A &= V\Sigma^{-1}\Sigma V^\top \because UU^\top=I \\
+                A^{-1}A &= VV^\top \because \Sigma\Sigma^{-1}=I \\
+                A^{-1}A &= I \because VV^\top=I
+            \end{align*}
+        \end{proof}
+        \item Given $A=U\Sigma V^\top$, multiplying by $A^\top$ to the left
+        \begin{align*}
+            A^\top A&=(U\Sigma V^\top)^\top U\Sigma V^\top \\
+            A^\top A&=(V^\top)^\top\Sigma^\top U^\top U\Sigma V^\top \\
+            A^\top A&=V\Sigma^\top\Sigma V^\top \\
+            A^\top A&=V\Sigma^2 V^\top
+        \end{align*}
+        Similarly multiplying $A^\top$ to the right
+        \begin{align*}
+            AA^\top &= U\Sigma V^\top (U\Sigma V^\top)^\top\\
+            A^\top A&= U\Sigma V^\top (V^\top)^\top\Sigma^\top U^\top\\
+            A^\top A&=U\Sigma^\top\Sigma U^\top \\
+            A^\top A&=U\Sigma^2 U^\top
+        \end{align*}
+    \end{enumerate}
+\end{solution}
+\end{problem}
+
 \begin{problem}[15]
 Recall that the definition of the Frobenius norm is \[\|A\|_{\fro}:=\left(\sum_{i=1}^m\sum_{j=1}^n|A_{ij}|^2\right)^\frac12.\]
 \begin{enumerate}[(a)]
@@ -273,13 +313,21 @@ Recall that the definition of the Frobenius norm is \[\|A\|_{\fro}:=\left(\sum_{
             \end{align*}
             Let $r = \rank(A) \therefore$ the diagonal entries of $\Sigma = \{\sigma_1,\dots,\sigma_r\}$
             \begin{align*}
-    \|A\|_F^2 &= \mathrm{trace}(\Sigma^\top \Sigma) \\
+            \Rightarrow\|A\|_F^2&=\sum_{i=1}^{r}\sigma_{i}^{2} \\
+            \Rightarrow\|A\|_F&=(\sum_{i=1}^{\rank(A)}\sigma_{i}^{2})^{\frac{1}{2}}
             \end{align*}
         \end{proof}
     \end{enumerate}
 \end{solution}
 \end{problem}
+\begin{problem}[18][CUR Decomposition]\label{PROB:CUREasy}
+Let $A\in\R^{m\times n}$, and $I\subset[m]$, $J\subset[n]$ with $|I|=|J|=k=\textnormal{rank}(A)$.  If $C=A(:,J)$, $R=A(I,:)$ and $U=A(I,J)$, prove that if $\rank(U)=k$, then $A=CU^{-1}R$.  (\textit{Hint:} First justify that one can write $A=CX$ for some unknown $X$. Next, write $R=P_IA$ where $P_I$ is a row selection matrix, and consider what happens to $A=CX$ upon multiplication by $P_I$.)
 
+\textbf{Note:} If you google this, you will find my published proof of it. Please try to do this from scratch using the hint above... 
+\begin{solution}
+    Since matrix $C$ is subset of column vectors of $A$
+\end{solution}
+\end{problem}
 
 \end{document}
 
