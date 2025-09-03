@@ -122,6 +122,12 @@ A = V \Lambda V^{-1},
 \]
 where $V$ is an orthogonal matrix ($V^{-1} = V^\top$) and $\Lambda$ is diagonal.
 
+Note: $\Lambda$ contains the eigenvalues of $A$, which are all non-zero since $A$ is invertible.
+\begin{proof}
+    \[Av=\Lambda v\]
+    If some $\lambda_{i}=0$, then $Av_{i}=0$ for some vector $v_{i} \neq 0$. This makes the $\mathcal{N}(A)$ non-trivial, contradicting the assumption that $A$ is invertible.
+\end{proof}
+
 \vspace{\baselineskip}
 \noindent To find $A^{-1}$, we use the property that for invertible matrices:
 \[
@@ -325,7 +331,23 @@ Let $A\in\R^{m\times n}$, and $I\subset[m]$, $J\subset[n]$ with $|I|=|J|=k=\text
 
 \textbf{Note:} If you google this, you will find my published proof of it. Please try to do this from scratch using the hint above... 
 \begin{solution}
-    Since matrix $C$ is subset of column vectors of $A$
+\begin{proof}
+        Since matrix $C$ is subset of column vectors of $A$. Therefore, the $\text{Col}(C) \subseteq \text{Col}(A)$. We also know that $|I|=|J|=k=\textnormal{rank}(A)$.
+
+    Assuming $\rank(U)=k$, the column vectors of $C$ become linearly independent i.e., $\operatorname{rank}(C)=k \Rightarrow \text{Col}(C)$ forms a basis for $\text{Col}(A)$. Thus, we can write $A=CX$ for some unknown $X$. Now, let $P_I$ be a row selection matrix that selects the rows indexed by $I$. Then we have:
+    \[
+    R = P_I A = P_I C X
+    \]
+    Since $P_I C$ selects the rows of $C$ corresponding to $I$, we can write:
+    \[
+    P_I C = U
+    \Rightarrow R = U X
+    \]
+    \[
+    A = C X = C U^{-1} R
+    \]
+
+\end{proof}
 \end{solution}
 \end{problem}
 
