@@ -57,7 +57,7 @@
 \theoremstyle{definition}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{question}{Question}
-\newtheorem{problem}{Problem}
+\newtheorem*{problem}{Problem}
 \newtheorem{solution}{Solution}
 \newtheorem{experiment}{Experiment}
 \newtheorem{remark}[theorem]{Remark}
@@ -104,7 +104,7 @@
 \allowdisplaybreaks
 
 \title{MATH 6310 (Fall 2025) Homework Solutions}
-\author{Vandit Goel\\\textbf{Updated:} Wednesday  3 September, 2025}
+\author{Vandit Goel\\\textbf{UTA ID:}1002245699\\\textbf{Updated:} Wednesday  3 September, 2025}
 
 \begin{document}
 
@@ -112,7 +112,7 @@
 
 \section{Linear Algebra Problems}
 
-\begin{problem}
+\begin{problem}[1]
 If $A\in\R^{n\times n}$ is symmetric, invertible, and has spectral decomposition $A=V\Lambda V^{-1}$, give (with proof) a formula for $A^{-1}$?
 
 \begin{solution}
@@ -140,7 +140,7 @@ A^{-1} = V \Lambda^{-1} V^{-1}.
 \end{problem}
 
 
-\begin{problem}
+\begin{problem}[2]
 \begin{enumerate}[(a)]
     \item Prove that $\mathcal{N}(A^\top A)=\mathcal{N}(A)$
     \item Prove that $\mathcal{N}(A)$ is orthogonal to $\row(A)$
@@ -240,6 +240,41 @@ A^{-1} = V \Lambda^{-1} V^{-1}.
 
             By (1) and (2) we prove,
             \[\rank(AB) = r\]
+        \end{proof}
+    \end{enumerate}
+\end{solution}
+\end{problem}
+
+\begin{problem}[15]
+Recall that the definition of the Frobenius norm is \[\|A\|_{\fro}:=\left(\sum_{i=1}^m\sum_{j=1}^n|A_{ij}|^2\right)^\frac12.\]
+\begin{enumerate}[(a)]
+\item Prove that the Frobenius norm is unitarily invariant (i.e., $\|QA\|_{\fro} = \|AW\|_{\fro} = \|A\|_{\fro}$ for any orthogonal matrices $Q,W$). \item Prove that for any $A\in\R^{m\times n}$,
+ \[\|A\|_{\fro} = \left(\sum_{i=1}^{\rank(A)} \sigma_i^2\right)^\frac12.\]
+\end{enumerate}
+\begin{solution}
+    \begin{enumerate}[(a)]
+        \item \begin{claim}[1]
+            $\|QAW\|_F=\|A\|_F$ $\forall$ orthogonal $Q,W$
+        \end{claim}
+        \begin{proof}
+            For the Frobenius norm, using $\|A\|_F^{2} = \mathrm{trace}(A^\top A),$
+            \[\|QAW\|_F^{2}=\mathrm{trace}(W^\top A^\top Q^\top.QAW)\] For $Q\in\R^{m\times n}$ it is orthogonal $\leftrightarrow Q^\top Q = I$
+            \[\|QAW\|_F^{2}=\mathrm{trace}(W^\top A^\top AW)\]
+            \[\|QAW\|_F^{2}=\mathrm{trace}( A^\top A) = \|A\|_F^{2}\]
+        \end{proof} 
+        \vspace{\baselineskip}
+        \item \begin{proof}
+            Let $SVD$ of $A$ be $A=U\Sigma V^\top$, where $U\in\R^{m\times m}$ and $V\in\R^{n\times n}$ are orthogonal and $\Sigma \in\R^{m\times n}$ \{diagonal\}
+            \begin{align*}
+            \|A\|_F^2&=\mathrm{trace}(A^\top A) \\
+            &=\mathrm{trace}((U\Sigma V^\top)^\top U\Sigma V^\top) \\
+            &= \mathrm{trace}(V\Sigma^\top U^\top U\Sigma V^\top) \\
+            &= \mathrm{trace}(\Sigma^\top \Sigma)
+            \end{align*}
+            Let $r = \rank(A) \therefore$ the diagonal entries of $\Sigma = \{\sigma_1,\dots,\sigma_r\}$
+            \begin{align*}
+    \|A\|_F^2 &= \mathrm{trace}(\Sigma^\top \Sigma) \\
+            \end{align*}
         \end{proof}
     \end{enumerate}
 \end{solution}
