@@ -310,14 +310,14 @@ Recall that the definition of the Frobenius norm is \[\|A\|_{\fro}:=\left(\sum_{
         \end{proof} 
         \vspace{\baselineskip}
         \item \begin{proof}
-            Let $SVD$ of $A$ be $A=U\Sigma V^\top$, where $U\in\R^{m\times m}$ and $V\in\R^{n\times n}$ are orthogonal and $\Sigma \in\R^{m\times n}$ \{diagonal\}
+            Let $\rank(A)=r$ and $SVD$ of $A$ be $A=U_r\Sigma_r V_r^\top$, where $U_r\in\R^{m\times r}$ and $V_r\in\R^{n\times r}$ are orthogonal and $\Sigma_r \in\R^{r\times r}$ \{diagonal\}
             \begin{align*}
             \|A\|_F^2&=\mathrm{trace}(A^\top A) \\
-            &=\mathrm{trace}((U\Sigma V^\top)^\top U\Sigma V^\top) \\
-            &= \mathrm{trace}(V\Sigma^\top U^\top U\Sigma V^\top) \\
-            &= \mathrm{trace}(\Sigma^\top \Sigma)
+            &=\mathrm{trace}((U_r\Sigma_r V_r^\top)^\top U_r\Sigma_r V_r^\top) \\
+            &= \mathrm{trace}(V_r\Sigma_r^\top U_r^\top U_r\Sigma_r V_r^\top) \\
+            &= \mathrm{trace}(\Sigma_r^\top \Sigma_r)
             \end{align*}
-            Let $r = \rank(A) \therefore$ the diagonal entries of $\Sigma = \{\sigma_1,\dots,\sigma_r\}$
+            The diagonal entries of $\Sigma = \{\sigma_1,\dots,\sigma_r\}$
             \begin{align*}
             \Rightarrow\|A\|_F^2&=\sum_{i=1}^{r}\sigma_{i}^{2} \\
             \Rightarrow\|A\|_F&=(\sum_{i=1}^{\rank(A)}\sigma_{i}^{2})^{\frac{1}{2}}
