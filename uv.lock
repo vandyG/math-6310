@@ -282,6 +282,7 @@ dependencies = [
     { name = "marimo" },
     { name = "matplotlib" },
     { name = "numpy" },
+    { name = "pandas" },
 ]
 
 [package.metadata]
@@ -290,6 +291,7 @@ requires-dist = [
     { name = "marimo", specifier = ">=0.16.4" },
     { name = "matplotlib", specifier = ">=3.10.6" },
     { name = "numpy", specifier = ">=2.3.3" },
+    { name = "pandas", specifier = ">=2.2.3" },
 ]
 
 [[package]]
