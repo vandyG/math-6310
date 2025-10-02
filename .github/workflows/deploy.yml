@@ -33,7 +33,8 @@ jobs:
       # Install additional Python deps required by marimo (e.g. narwhals)
       - name: 📥 Install Python dependencies
         run: |
-          uv sync
+          uv syc
+          uv add narwhals
 
 
       # Run the build script to export notebooks to WebAssembly
