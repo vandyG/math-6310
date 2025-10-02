@@ -33,7 +33,7 @@ jobs:
       # Install additional Python deps required by marimo (e.g. narwhals)
       - name: 📥 Install Python dependencies
         run: |
-          uv syc
+          uv sync
           uv add narwhals
 
 
