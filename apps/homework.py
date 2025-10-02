@@ -18,7 +18,7 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(
-        rf"""
+        r"""
     **Name:** Vandit Goel  
     **ID:** 1002245699   
     **Email:** vxg5699@mavs.uta.edu   
@@ -45,10 +45,10 @@ def _(mo):
 @app.cell
 def _():
     import numpy as np
-    import matplotlib.pyplot as plt
     import marimo as mo
     import pandas as pd
     import altair as alt
+
     return alt, mo, np, pd
 
 
@@ -121,10 +121,12 @@ def _(
     n = matrix_size_slider.value
 
     # Prepare a DataFrame with real and imaginary parts
-    df = pd.DataFrame({
-        "real": all_eigenvalues.real,
-        "imag": all_eigenvalues.imag,
-    })
+    df = pd.DataFrame(
+        {
+            "real": all_eigenvalues.real,
+            "imag": all_eigenvalues.imag,
+        }
+    )
 
     # Create an Altair scatter plot with semi-transparent points
     chart = (
@@ -151,7 +153,6 @@ def _(
         [
             distribution_dropdown,
             matrix_size_slider,
-
         ],
         align="start",
         gap="0.75rem",
