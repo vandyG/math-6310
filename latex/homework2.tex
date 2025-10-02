@@ -1,0 +1,294 @@
+\documentclass{amsart}[11pt]
+\usepackage[utf8]{inputenc}
+
+\pagestyle{plain}
+
+\usepackage{hyperref}
+%\usepackage{tablefootnote}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{amsthm}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{float}
+\usepackage{bbm}
+\usepackage{amsmath}
+\usepackage{comment}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{ulem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[lined,boxed,commentsnumbered]{algorithm2e}
+\usepackage{fourier}
+\usepackage{multicol}
+\usepackage{soul}
+\allowdisplaybreaks
+
+\hypersetup{
+	colorlinks,
+	citecolor=blue,
+	filecolor=blue,
+	linkcolor=blue,
+	urlcolor=blue,
+	%hyperfootnotes=false
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lem}{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+
+\newtheorem*{claim}{Claim}
+\newtheorem{thmnum}{Theorem}
+\renewcommand{\thethmnum}{\Alph{thmnum}}
+\newtheorem{propnum}{Proposition}
+\renewcommand{\thepropnum}{\Alph{propnum}}
+\newtheorem{cornum}{Corollary}
+\renewcommand{\thecornum}{\Alph{cornum}}
+
+\newtheorem*{theoremos}{Theorem}
+\newtheorem*{prop}{Proposition}
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{question}{Question}
+\newtheorem*{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem{experiment}{Experiment}
+\newtheorem{remark}[theorem]{Remark}
+
+% % % % % % % % % % %our macros % % % % % % % % % % % % % % %
+\newcommand{\esssup}{{\mathrm{ess}\sup}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\Shah}{{\makebox[2.3ex][s]{$\sqcup$\hspace{-0.15em}\hfill $\sqcup$}  }}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\bc}{\textbf{c}}
+\newcommand{\Wcp}{{W_0(L^p)}}
+\newcommand{\lsp}{{\boldsymbol\ell}}
+\newcommand{\Wco}{{W_0(L^1)}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand {\D} {\mathbb D}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\sspan}{\textnormal{span}}
+\newcommand{\bracket}[1]{\left\langle#1\right\rangle}
+\newcommand{\col}{\textnormal{Col}}
+\newcommand{\row}{\textnormal{Row}}
+\newcommand{\rank}{\textnormal{rank}}
+\newcommand{\diag}{\textnormal{diag}}
+\newcommand{\tr}{\textnormal{tr}}
+\newcommand{\fro}{\textnormal{F}}
+\newcommand{\rw}{\textnormal{rw}}
+\newcommand{\sym}{\textnormal{sym}}
+\newcommand{\eps}{\varepsilon}
+
+\allowdisplaybreaks
+
+\title{MATH 6310 (Fall 2025) Homework Solutions}
+\author{Vandit Goel\\\textbf{UTA ID:}1002245699\\}
+
+\begin{document}
+
+\maketitle
+
+\section{Homework 2 - Wednesday  1 October, 2025}
+
+\begin{problem}[3]
+Prove that for any $A\in\R^{n\times n}$, $\tr(A) = \sum\lambda_i(A)$.
+\begin{solution}
+    By Spectral Theorem,
+\[ A = V\Lambda V^{-1} = V\Lambda V^\top , \]
+where $V = \begin{bmatrix} v_1 & \cdots & v_n\end{bmatrix}$ and $\Lambda$ is diagonal and contains the eigenvectors of $A$.
+\[\tr(A) = \tr(V\Lambda V^\top)\tag{1}\]
+By cyclic property of trace, $\tr(ABC) = \tr(CAB)$
+
+We can rewrite (1) as,
+\[\tr(A) = \tr(V^\top V\Lambda)\]
+
+Since V is an orthogonal matrix, $VV^\top = I$
+\[\tr(A) = \tr(\Lambda) = \sum\lambda_i\]
+where $\lambda_i$ are the eigenvalues of $A$.
+\end{solution}
+\end{problem}
+
+\begin{problem}[4]A symmetric matrix $A=A^\top$ has orthonormal eigenvectors $v_1,\dots,v_n$. Define the \textbf{Rayleigh quotient} of $A$ via:
+    \[ R(x):= \frac{\bracket{Ax,x}}{\bracket{x,x}}. \]
+    
+\begin{enumerate}[(a)]
+    \item Prove that \[\max_{x\in\R^n} R(x) = \lambda_1.\]
+    \item Now prove that $\lambda_2$ is the solution to the following constrained optimization problem
+    \[ \max_{x\in\R^n} R(x) \quad \textnormal{subject to} \quad \bracket{v_1,x}=0. \]
+    \item Similar to the previous part, under what constraints is $\lambda_3$ the solution to $\max R(x)$	?
+\end{enumerate}
+\begin{solution}
+    \begin{enumerate}[(a)]
+        \item \begin{claim}
+            \[\max_{x\in\R^n} R(x) = \lambda_1.\]
+        \end{claim}
+        \begin{proof}
+            Given $A=A^\top$ and $v_1,\dots,v_n$ are orthonormal eigenbasis with eigenvalues ordered $\lambda_1\ge\lambda_2\ge\cdots\ge\lambda_n$. For any $x\in\mathbb R^n$ let
+\[x=\sum_{i=1}^n \alpha_i v_i,\qquad \alpha_i=\langle v_i,x\rangle\] Then, $\langle x,x\rangle=\sum_i \alpha_i^2$ and since $Av_i=\lambda_i v_i$, \[\langle Ax,x\rangle=\sum_{i=1}^n \lambda_i\alpha_i^2\] 
+Hence the Rayleigh quotient becomes \[R(x)=\frac{\sum_{i=1}^n \lambda_i\alpha_i^2}{\sum_{i=1}^n \alpha_i^2}
+= \sum_{i=1}^n \lambda_i w_i,
+\quad\text{where } w_i:=\frac{\alpha_i^2}{\sum_j\alpha_j^2}\tag{1}\]
+Note that $w_i\ge0$ and $\sum_i w_i=1$, so $R(x)$ is weighted average of the eigenvalues ${\lambda_i}$. From this representation, the following facts are immediate.
+\[\min_i\lambda_i \le R(x)\le \max_i\lambda_i=\lambda_1\qquad \forall x\]
+        \end{proof} 
+        \item If we impose $\langle v_1,x\rangle=0$, then $\alpha_1=0$ and the weights satisfy $w_1=0$. From (1), $R(x)$ is a combination of $\lambda_2,\dots,\lambda_n$, so for such $x$
+        \[R(x)\le\max_{i\ge2}\lambda_i=\lambda_2\]
+        \item By the same reasoning, if $x$ is orthogonal to $v_1$ and $v_2$ (i.e. $\langle v_1,x\rangle=\langle v_2,x\rangle=0)$, then $\alpha_1=\alpha_2=0$ and $R(x)$ is a combination of $\lambda_3,\dots,\lambda_n$. Thus, the maximum under those constraints is $\lambda_3$, achieved at $x=v_3$.
+    \end{enumerate}
+\end{solution}
+\end{problem}
+\begin{problem}[5]
+ In class we proved (or will prove) the first equality in the following theorem.
+\begin{theorem}[Courant--Fischer Minimax Theorem]
+Let $A\in\R^{n\times n}$ be symmetric with eigenvalues $\lambda_1\geq\dots\geq\lambda_n$. Then
+\[\lambda_k = \max_{\substack{S\subset\R^n\\ \dim(S)=k}}\min_{x\in S}\frac{\bracket{Ax,x}}{\bracket{x,x}} = \min_{\substack{T\subset\R^n \\ \dim(T)=n-k+1}}\max_{x\in T}\frac{\bracket{Ax,x}}{\bracket{x,x}}.\]
+\end{theorem}
+Prove the second equality (by proving that the far right-hand side gives $\lambda_k$). This is a generalization of the Rayleigh quotient problem above.
+\begin{solution}
+    \begin{claim}
+        \[
+\lambda_k = \min_{\substack{T\subset\R^n\\dim T=n-k+1}}\max_{x\in T} R(x),
+\qquad R(x)=\frac{\langle Ax,x\rangle}{\langle x,x\rangle},
+\]
+    \end{claim}
+    \begin{proof}
+        Let $S_k:=\operatorname{span}({v_1,\dots,v_k})$ (so $\dim S_k=k)$ and $T_k:=\operatorname{span}({v_k,\dots,v_n})$ (so $\dim T_k=n-k+1)$
+
+        For any nonzero $x\in T_k$ it can be written $x=\sum_{i=k}^n \alpha_i v_i$, hence \end{proof}
+
+        \[   R(x)=\frac{\sum_{i=k}^n \lambda_i\alpha_i^2}{\sum_{i=k}^n \alpha_i^2}\]
+
+        From the proof in problem (4) we know $R(x)\le\lambda_k$ for all $x\in T_k$ and the maximum over $T_k = \lambda_k$ (attained at $x=v_k$). Thus, \[\min_{\dim T=n-k+1}\max_{x\in T}R(x)\le\max_{x\in T_k}R(x)=\lambda_k\tag{1}\]
+
+        Now, we know \[\dim S_k+\dim T = k+(n-k+1)=n+1>n\] that the intersection $S_k\cap T$ is non-trivial, so there exists a non-zero $x\in S_k\cap T$. For such $x$ we can write $x=\sum_{i=1}^k \alpha_i v_i$, hence \[   R(x)=\frac{\sum_{i=1}^k \lambda_i\alpha_i^2}{\sum_{i=1}^k \alpha_i^2}\]
+
+        From the proof in Problem (4) we know $R(x)\ge\min{\{\lambda_1,\dots,\lambda_k\}}=\lambda_k$ \[\max_{y\in T}R(y)\ge R(x);\ge;\lambda_k\]
+
+        This is true since $x\in T$ as well so $R(x)$ is one of the candidate values in that set. The maximum over the whole set must be at least as large as any one candidate. This holds for every subspace $T$ of dimension $n-k+1$, so taking the minimum over such $T$ yields
+
+        \[\min_{\dim T=n-k+1}\max_{x\in T}R(x)\ge\lambda_k\tag{2}\]
+
+        From (1) and (2)
+        \[\lambda_k=\min_{\substack{T\subset\R^n\\dim T=n-k+1}}\max_{x\in T}R(x)\]
+\end{solution}
+\end{problem}
+
+\begin{problem}[31][Requires Programming]\label{PROB:GaussianSpectrum}
+Generate 100 matrices of size $100\times 100$ whose entries are random Gaussians (i.e., drawn from $\mathcal{N}(0,1)$).  For each matrix, compute its eigenvalues, and after all matrices are generated, plot all of the eigenvalues on one plot (note they will be complex in general).  What do you notice?  Try this experiment for different sizes of matrices; what do you notice?
+
+Your code must be turned in as an appendix at the end of your homework. In the space below this problem, you should put any figures you generate and your answers to the questions.
+\begin{solution}
+    Generated plots for different sizes of $n\times n$ matrices
+    \begin{center}
+        \begin{tabular}{@{}c@{\hspace{1.5em}}c@{}}
+            \includegraphics[width=0.38\textwidth]{visualization(4).png} &
+            \includegraphics[width=0.38\textwidth]{visualization(5).png} \\
+            \includegraphics[width=0.38\textwidth]{visualization(6).png} &
+            \includegraphics[width=0.38\textwidth]{visualization(7).png}
+        \end{tabular}
+    \end{center}
+    \textbf{Observations:}
+        \begin{itemize}
+        \item Eigenvalues are plotted in the complex plane (real part on x-axis, imaginary part on y-axis).
+        \item The plotted points form a roughly circular band centered near the origin.
+        \item The radius increases with the size of the matrices.
+        \begin{itemize}
+            \item For $n=50$, radius $\approx 7$
+            \item For $n=100$, radius $\approx 10$
+            \item For $n=150$, radius $\approx 13$
+            \item For $n=200$, radius $\approx 14$
+        \end{itemize}
+        \item Point density appears higher near the center and decreases toward the perimeter.
+        \item Some variability and gaps are visible; the distribution is not perfectly uniform.
+        \item The plot is less uniform for smaller values of $n$.
+    \end{itemize}
+\end{solution}
+    
+\end{problem}
+
+\begin{problem}[32][Requires Programming]\label{PROB:RandomSpectrum}
+Repeat the process of Problem \ref{PROB:GaussianSpectrum} but for random matrices with entries drawn i.i.d. from some other distribution and write your conclusions. (Examples would be Uniform[0,1], Uniform[a,b] for other choices of $a, b\in\R$, Bernoulli $\{\pm1\}$ (with equal probability), $\beta$ distributions, but feel free to choose whatever you like).
+
+Your code must be turned in as an appendix at the end of your homework. In the space below this problem, you should put any figures you generate and your answers to the questions.
+\begin{solution}
+    Generated plots for various other distributions:
+        \begin{center}
+        \begin{tabular}{@{}c@{\hspace{1.5em}}c@{}}
+            \includegraphics[width=0.38\textwidth]{visualization(10).png} &
+            \includegraphics[width=0.38\textwidth]{visualization(9).png} \\
+            \includegraphics[width=0.38\textwidth]{visualization(11).png} &
+            \includegraphics[width=0.38\textwidth]{visualization(13).png} \\
+            \includegraphics[width=0.38\textwidth]{visualization(15).png} &
+            \includegraphics[width=0.38\textwidth]{visualization(14).png}
+        \end{tabular}
+    \end{center}
+        \textbf{Observations:}
+        \begin{itemize}
+        \item The chart for Uniform (0,1) distributions seem to be circular/disk as well. But interestingly has a few outliers around (50,0).
+        \item The outliers disappear for Uniform (-1, 1) and is predominantly circular/disk.
+        \item The raidus also seem to increase with the size of the matrix for both Uniform distributions.
+        \item Similar observations noted for Bernoulli distribution.
+        \item Beta Distribution seem to always have outliers. But is predominantly circular/disk shaped.
+        \item The disk shape for these distribution can be attributed to the fact that they can be approximated as a Normal Distribution.
+    \end{itemize}
+\end{solution}
+\end{problem}
+
+\clearpage
+
+\appendix
+
+\section{Code for Problems 31 and 32}
+
+\makeatletter
+\renewcommand*{\lst@visiblespace}{\texttt{␣}}
+\renewcommand*{\lst@visibletab}{\texttt{␣␣␣␣}}
+\makeatother
+
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    keywordstyle=\color{NavyBlue},
+    commentstyle=\color{OliveGreen},
+    stringstyle=\color{BrickRed},
+    inputencoding=utf8,
+    keepspaces=true,
+    showstringspaces=true,
+    showspaces=true,
+    showtabs=true,
+    tabsize=4,
+    literate={×}{{\ensuremath{\times}}}1
+}
+
+\lstinputlisting[
+    caption={Marimo application used to generate eigenvalue visualizations},
+    label=lst:marimo-app
+]{homework.py}
+
+\end{document}
