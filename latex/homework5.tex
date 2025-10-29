@@ -1,0 +1,425 @@
+\documentclass{amsart}[11pt]
+\usepackage[utf8]{inputenc}
+
+\pagestyle{plain}
+
+\usepackage{hyperref}
+%\usepackage{tablefootnote}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{amsthm}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{float}
+\usepackage{bbm}
+\usepackage{amsmath}
+\usepackage{comment}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{ulem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[lined,boxed,commentsnumbered]{algorithm2e}
+\usepackage{fourier}
+\usepackage{multicol}
+\usepackage{soul}
+\allowdisplaybreaks
+
+\hypersetup{
+	colorlinks,
+	citecolor=blue,
+	filecolor=blue,
+	linkcolor=blue,
+	urlcolor=blue,
+	%hyperfootnotes=false
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lem}{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+
+\newtheorem*{claim}{Claim}
+\newtheorem{thmnum}{Theorem}
+\renewcommand{\thethmnum}{\Alph{thmnum}}
+\newtheorem{propnum}{Proposition}
+\renewcommand{\thepropnum}{\Alph{propnum}}
+\newtheorem{cornum}{Corollary}
+\renewcommand{\thecornum}{\Alph{cornum}}
+
+\newtheorem*{theoremos}{Theorem}
+\newtheorem*{prop}{Proposition}
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{question}{Question}
+\newtheorem*{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem{experiment}{Experiment}
+\newtheorem{remark}[theorem]{Remark}
+
+% % % % % % % % % % %our macros % % % % % % % % % % % % % % %
+\newcommand{\esssup}{{\mathrm{ess}\sup}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\Shah}{{\makebox[2.3ex][s]{$\sqcup$\hspace{-0.15em}\hfill $\sqcup$}  }}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\bc}{\textbf{c}}
+\newcommand{\Wcp}{{W_0(L^p)}}
+\newcommand{\lsp}{{\boldsymbol\ell}}
+\newcommand{\Wco}{{W_0(L^1)}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand {\D} {\mathbb D}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\sspan}{\textnormal{span}}
+\newcommand{\bracket}[1]{\left\langle#1\right\rangle}
+\newcommand{\col}{\textnormal{Col}}
+\newcommand{\row}{\textnormal{Row}}
+\newcommand{\rank}{\textnormal{rank}}
+\newcommand{\diag}{\textnormal{diag}}
+\newcommand{\tr}{\textnormal{tr}}
+\newcommand{\fro}{\textnormal{F}}
+\newcommand{\rw}{\textnormal{rw}}
+\newcommand{\sym}{\textnormal{sym}}
+\newcommand{\eps}{\varepsilon}
+
+\allowdisplaybreaks
+
+\title{MATH 6310 (Fall 2025) Homework Solutions}
+\author{Vandit Goel\\\textbf{UTA ID:}1002245699\\}
+
+\begin{document}
+
+\maketitle
+
+\section{Homework 5 - Wednesday  29 October, 2025}
+
+\begin{problem}[9]
+A matrix $A\in\R^{n\times n}$ is \textit{strictly diagonally dominant (SDD)} if $|A_{ii}|>\sum_{j\neq i}|A_{ij}|$ for all $i\in[n]$. Prove that if $A$ is SDD then $A$ is invertible. (\textit{Hint:} Show that $0$ cannot be an eigenvalue of $A$ by mimicking the proof of the Ger\v{s}gorin circle theorem.)
+\end{problem}
+\begin{solution}
+    A square matrix $A \in \mathbb{R}^{n \times n}$ is invertible if and only if $\mathbf{0}$ is not an eigenvalue of $A$. We will prove that if $A$ is strictly diagonally dominant (SDD), then $\mathbf{0}$ cannot be an eigenvalue, thereby showing that $A$ must be invertible.
+
+    A matrix $A$ is strictly diagonally dominant if for all $i \in [n] = \{1, 2, \dots, n\}$:
+    \[
+        |A_{ii}| > \sum_{j \neq i} |A_{ij}|
+    \]
+
+    \begin{proof}
+        Assume, that $\mathbf{0}$ is an eigenvalue of $A$.
+
+        If $\mathbf{0}$ is an eigenvalue, then there exists a non-zero eigenvector $\mathbf{x} = \begin{bmatrix}
+            x_1&x_2&\dots&x_n
+        \end{bmatrix}^\top$ such that:
+        \[
+            A\mathbf{x} = \mathbf{0}\mathbf{x} = \mathbf{0}
+        \]
+
+        Now, consider an index $k$ such that $|x_k| = \max_{i} |x_i|$. Since $\mathbf{x}$ is a non-zero vector, we must have $|x_k| > 0$.
+
+        \[
+            \sum_{j=1}^{n} A_{ij} x_j = 0
+        \]
+        splitting at $k^{\text{th}}$ index.
+        \begin{align*}
+            &A_{kk} x_k + \sum_{j \neq k} A_{kj} x_j = 0\\
+            &A_{kk} x_k = - \sum_{j \neq k} A_{kj} x_j\\
+        \end{align*}
+        Taking the absolute value of both sides.
+        \begin{align*}
+            &|A_{kk} x_k| = \left| - \sum_{j \neq k} A_{kj} x_j \right| = \left| \sum_{j \neq k} A_{kj} x_j \right|\\
+            &|A_{kk}| |x_k| = \left| \sum_{j \neq k} A_{kj} x_j \right|
+        \end{align*}
+        By triangle inequality,
+        \begin{align*}
+            &|A_{kk}| |x_k| \leq \sum_{j \neq k} |A_{kj} x_j|\\
+            &|A_{kk}| |x_k| \leq \sum_{j \neq k} |A_{kj}| |x_j|
+        \end{align*}
+        we know that $|x_j| \leq |x_k|$ for all $j \neq k$. Substituting this into the inequality:
+        $$|A_{kk}| |x_k| \leq \sum_{j \neq k} |A_{kj}| |x_k|$$
+        $$|A_{kk}| |x_k| \leq |x_k| \sum_{j \neq k} |A_{kj}|$$
+
+        Since $\mathbf{x}$ is a non-zero vector, we established that $|x_k| > 0$. Therefore, we can divide both sides of the inequality by $|x_k|$:
+        $$|A_{kk}| \leq \sum_{j \neq k} |A_{kj}|$$
+
+        But this contradicts with our assumption that matrix $A$ is SDD.
+
+        Thus, our initial assumption that $\mathbf{0}$ is an eigenvalue of $A$ must be false and if matrix A is SDD it is  invertible.
+
+
+    \end{proof}
+
+\end{solution}
+
+\begin{problem}[11]Alternate Proof of the Spectral Decomposition; \textit{Counts as 2 problems}
+The aim is to prove that $A = V\Lambda V^\top$ for symmetric $A\in\R^{n\times n}$.
+\begin{enumerate}[(a)]
+\item Let $V$ be any subspace of $\R^n$ and $A\in\R^{n\times n}$ be symmetric. Prove that if $Ax\in V$ for every $x\in V$, then $Ay\in V^\perp$ for every $y\in V^\perp$.
+\item With the assumptions above, if $V$ is any nontrivial subspace of $\R^n$ (i.e., $V\neq \{0\}$) and $Ax\in V$ for every $x\in V$, prove that $V$ contains an eigenvector of $A$. (\textit{Hint:} Start with an orthonormal basis of $V$, say $\{u_1,\dots,u_k\}$. Write $A = UR$ for some $R\in\R^{k\times k}$. Show that $R$ is symmetric. Next, suppose $\lambda$ is an eigenvalue of $R$ with eigenvector $v$. Show that $w  = \sum v_ju_j$ is an eigenvector of $A$ with eigenvalue $\lambda$.)
+\item Prove the spectral theorem. (\textit{Hint:} Start with $\lambda_1, v_1$ the leading eigenvalue/vector of $A$ and let $V_1 = \sspan(v_1)$. Use the above lemmas to find an orthogonal eigenvector $v_2\perp v_1$. Iterate the argument to complete the proof.)
+\end{enumerate}
+\end{problem}
+\begin{solution}
+    \begin{enumerate}[(a)]
+        \item To prove: $\langle Ay, x\rangle=0$
+    
+    Let $y\in V^\perp$, given $x\in V$ and $Ax\in V$.
+    
+    \begin{proof}
+        Since $y\in V^\perp$,
+        \[\langle y, Ax\rangle=0\]
+        \[\langle A^\top y, x\rangle=0\]
+        \[\langle A y, x\rangle=0\]
+
+        Since $(A\mathbf{y}) \cdot \mathbf{x} = 0$ holds for every $\mathbf{x} \in V$, it proves that $A\mathbf{y}$ is orthogonal to $V$ i.e., $A\mathbf{y} \in V^\perp$.
+    \end{proof}
+    \item To Prove: $w  = \sum v_ju_j$ is an eigenvector of $A$ with eigenvalue $\lambda$
+    \begin{proof}
+        Let $[u_1,\dots,u_k]$ be an orthonormal basis of the nontrivial subspace (V). Let $U=[u_1\ \cdots\ u_k]$. Then $U^\top U=I_k$ and $\operatorname{col}(U)=V$.
+
+    Because $A$ maps $V$ into $V$, each column $Au_j$ lies in $V$ and so can be written as a linear combination of the $u_i$. Hence there exists an $k\times k$ matrix $R$ with
+    \[
+    AU = U R.
+    \]
+    Multiply on the left by $U^\top$. Using $U^\top U=I_k$ we get
+    \[
+    R = U^\top A U.
+    \]
+    Since $A$ is symmetric, $A^\top=A$, so
+    \[
+    R^\top = U^\top A U^\top = U^\top A^\top U = U^\top A U = R,
+    \]
+    thus $R$ is symmetric.
+    Let $Rv=\lambda v$, where $v\neq0$
+    
+    For given,
+    \[
+        w := Uv = \sum_{j=1}^k v_j u_j \in V.
+    \]
+    Because $U^\top U=I_k$ we have $|w|^2 = v^\top U^\top U v = v^\top v>0$, so $w\neq0$. Now
+    \[
+    Aw = A(Uv) = (AU)v = (UR)v = U(Rv) = U(\lambda v) = \lambda(Uv)=\lambda w.
+    \]
+    \end{proof}
+    \item \begin{theorem}
+        Let $A\in R^{n\times n}$, then $\exists$ orthonormal basis of eigenvectors of A.
+    \end{theorem}
+    \begin{proof}
+            The whole space $V=\mathbb R^n$ is nontrivial and $A$-invariant, so by the lemma (b) there is a nonzero eigenvector $v_1$ of $A$ with eigenvalue $\lambda_1$
+    
+           We use the lemmas established in the previous problems:
+           
+           The first problem showed that if $A$ is symmetric and $A(\mathbf{x}) \in V$ for all $\mathbf{x} \in V$, then 
+           \[
+           A(\mathbf{y}) \in V^\perp \quad\forall\quad \mathbf{y} \in V^\perp.
+           \]
+
+            Here, $V = V_1 = \text{span}(\mathbf{v}_1)$. The condition $A(\mathbf{x}) \in V_1$ is satisfied because for any $\mathbf{x} = c\mathbf{v}_1 \in V_1$, we have $A\mathbf{x} = A(c\mathbf{v}_1) = c(A\mathbf{v}_1) = c(\lambda_1 \mathbf{v}_1) = (\lambda_1 c)\mathbf{v}_1$, which is clearly still in $V_1$.
+            
+            Therefore, the previous lemma applies: $A$ preserves the orthogonal complement $V_1^\perp$.
+                $$\mathbf{y} \in V_1^\perp \implies A\mathbf{y} \in V_1^\perp$$
+
+            We can choose an orthonormal basis for $V_1^\perp$, 
+            $$ \{\mathbf{u}_2, \mathbf{u}_3, \dots, \mathbf{u}_n\}$$
+            Let $P$ be the $n \times (n-1)$ matrix with columns $\mathbf{u}_2, \dots, \mathbf{u}_n$. We can define a matrix  (similar to $R$ in (b)):
+            \[
+                A' = P^T A P
+            \]
+
+            Since $A$ is symmetric, $A'$ must also be symmetric: $(A')^T = (P^T A P)^T = P^T A^T (P^T)^T = P^T A P = A'$. $A'$ is an $(n-1) \times (n-1)$ symmetric matrix. By (b), $A'$ has $n-1$ orthonormal eigenvectors, $\mathbf{w}_2, \dots, \mathbf{w}_n$.
+
+            Each eigenvector $\mathbf{w}_i$ of $A'$ corresponds to an eigenvector $\mathbf{v}_i \in V_1^\perp$ of $A$ by the transformation:
+                $$\mathbf{v}_i = P \mathbf{w}_i$$
+            (This is exactly the construction from the previous problem, $\mathbf{w} = U\mathbf{v}$.)
+
+            These vectors $\mathbf{v}_2, \dots, \mathbf{v}_n$ are orthonormal because the $\mathbf{w}_i$'s are orthonormal, and $P$ has orthonormal columns ($P^T P = I_{n-1}$).
+
+            Finally, since $\mathbf{v}_2, \dots, \mathbf{v}_n$ are all in $V_1^\perp$, they are all orthogonal to $\mathbf{v}_1$.
+
+            We have constructed a set of $n$ vectors $\{\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_n\}$ that are \textbf{Eigenvectors of} A and are \textbf{Orthogonal}.
+
+    \end{proof}
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}[12]
+Suppose $A\in\R^{m\times n}$ with SVD $A=U\Sigma V^\top$ and that $\rank(A)=k$.  Write $U$, $\Sigma$, and $V^\top$ in block form as follows
+\[ U = \begin{bmatrix} U_k & U_{m-k}\end{bmatrix},\quad \Sigma = \begin{bmatrix} \Sigma_k & 0\\0 & 0\end{bmatrix},\quad V^\top = \begin{bmatrix} V_k^\top \\\\ V_{n-k}^\top\end{bmatrix}, \]
+where $U_k$ contains the first $k$ left singular vectors, and $U_{m-k}$ contains the remainder, and similarly for $V_k$, and $\Sigma_k = \diag(\sigma_1,\dots,\sigma_k)$ is diagonal and contains all nonzero singular values of $A$.
+
+\begin{enumerate}[(a)]
+\item List the sizes of all of the submatrices involved in the expressions above (including the $0$ blocks in $\Sigma$)
+\item Multiply $U\Sigma V^\top$ using block matrix multiplication from above, and prove that $U\Sigma V^\top = U_k\Sigma_kV_k^\top$ (hence $A=U_k\Sigma_kV_k^\top$).
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}[(a)]
+        \item Sizes of the blocks\\
+        Given $A\in\mathbb R^{m\times n}$ and $\operatorname{rank}(A)=k$:
+        \begin{itemize}
+            \item $U$ is $m\times m$ orthogonal.
+            \begin{itemize}
+                \item $U_k$ contains the first $k$ columns of $U$, so $U_k$ is $m\times k$.
+                \item $U_{m-k}$ contains the remaining $m-k$ columns, so $U_{m-k}$ is $m\times(m-k)$.
+            \end{itemize}
+            \item $\Sigma$ is $m\times n$. It is blocked as
+            \[\Sigma=\begin{bmatrix}\Sigma_k & 0\\ 0 & 0\end{bmatrix},\]
+            where
+            \begin{itemize}
+                \item $\Sigma_k$ is the $k\times k$ diagonal matrix $\operatorname{diag}(\sigma_1,\dots,\sigma_k)$ (the nonzero singular values),
+                \item the top-right zero block has size $k\times (n-k)$,
+                \item the bottom-left zero block has size $(m-k)\times k$,
+                \item the bottom-right zero block has size $(m-k)\times (n-k)$.\\(Together these blocks make an $(m\times n)$ matrix.)
+            \end{itemize}
+            \item $V$ is $n\times n$ orthogonal.
+            \begin{itemize}
+                \item $V_k$ (first (k) columns) is $n\times k$, so $V_k^\top$ is $k\times n$.
+                \item $V_{n-k}$ is $n\times(n-k)$, so $V_{n-k}^\top$ is $(n-k)\times n$.\\Stacking these gives $V^\top$ which is $n\times n$.
+            \end{itemize}
+        \end{itemize}
+        \item \begin{proof}
+            We start with the block product $U\Sigma V^\top$. First we multiply $U$ and $\Sigma$. Using the block forms
+            \[
+            U=\begin{bmatrix}U_k & U_{m-k}\end{bmatrix},\qquad \Sigma=\begin{bmatrix}\Sigma_k & 0\\0 & 0\end{bmatrix},
+            \]
+            we get
+            \[
+            U\Sigma = \begin{bmatrix}U_k & U_{m-k}\end{bmatrix}
+            \begin{bmatrix}\Sigma_k & 0\\0 & 0\end{bmatrix}
+            = \begin{bmatrix}U_k\Sigma_k & 0\end{bmatrix}.
+            \]
+            Here $U_k\Sigma_k$ is $m\times k$ and the zero block is $m\times (n-k)$.
+
+            Now multiply this with $V^\top=\begin{bmatrix}V_k^\top\\V_{n-k}^\top\end{bmatrix}$:
+            \[
+            U\Sigma V^\top
+            = \begin{bmatrix}U_k\Sigma_k & 0\end{bmatrix}
+            \begin{bmatrix}V_k^\top\\V_{n-k}^\top\end{bmatrix}
+            = U_k\Sigma_k V_k^\top + 0\cdot V_{n-k}^\top
+            = U_k\Sigma_k V_k^\top.
+            \]
+
+        \end{proof}
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}[14]
+Let $A\in\R^{m\times n}$ have truncated SVD of order $k$ given by $A_k=U_k\Sigma_kV_k^{\top}$. 
+\begin{enumerate}[(a)]
+\item Give a formula for $A_kA_k^\top$ (make any simplifications you can)
+\item Give a formula for $A_k^\top A_k$ (make any simplifications you can)
+\item Interpret these formulas.
+\end{enumerate}
+\end{problem}
+\begin{solution}
+    Let $A_k=U_k\Sigma_k V_k^{\top}$ where $U_k\in\mathbb R^{m\times k}$, $V_k\in\mathbb R^{n\times k}$ have orthonormal columns and $\Sigma_k=\operatorname{diag}(\sigma_1,\dots,\sigma_k)$ with $\sigma_1\ge\cdots\ge\sigma_k>0$.
+        \begin{lemma}
+            $V_k^\top V_k=I_k$
+        \end{lemma}
+        \begin{proof}
+            We know $U\in\mathbb R^{m\times m}$ and $V\in\mathbb R^{n\times n}$ are orthogonal matrices ($U^\top U = I_m$, $V^\top V = I_n$).
+
+            $U_k$ and $V_k$ are obtained by \textbf{keeping only the first $k$ columns} of $U$ and $V$ corresponding to the nonzero singular values $\sigma_1,\ldots,\sigma_k$.
+            Since the columns of $U$ and $V$ are orthonormal, any subset of them (like the first $k$) will also be orthonormal - i.e.
+            \[
+                U_k^\top U_k = I_k \quad \text{and} \quad V_k^\top V_k = I_k.
+            \]
+        \end{proof}
+        \begin{enumerate}[(a)]
+            \item $\mathbf{A_kA_k^\top}$
+        \[
+            \begin{aligned}
+            A_kA_k^\top &= (U_k\Sigma_k V_k^\top)(U_k\Sigma_k V_k^\top)^\top\\
+            &= U_k\Sigma_k V_k^\top V_k\Sigma_k U_k^\top \\
+            &= U_k\Sigma_k^2 U_k^\top,
+            \end{aligned}
+            \]
+
+            since $V_k^\top V_k=I_k$.
+
+            Equivalently,
+            \[
+            A_kA_k^\top=\sum_{i=1}^k \sigma_i^2,u_i u_i^\top.
+            \]
+
+            \item
+            
+            $\mathbf{A_k^\top A_k}$
+            \[
+                \begin{aligned}
+                A_k^\top A_k &= (U_k\Sigma_k V_k^\top)^\top(U_k\Sigma_k V_k^\top)\\
+                &= V_k\Sigma_k U_k^\top U_k\Sigma_k V_k^\top \\
+                &= V_k\Sigma_k^2 V_k^\top,
+                \end{aligned}
+            \]
+            
+            since $U_k^\top U_k=I_k$.
+            
+            Equivalently,
+            \[
+            A_k^\top A_k=\sum_{i=1}^k \sigma_i^2,v_i v_i^\top.
+            \]
+            \item \textbf{Interpretation}
+            
+                Both $A_kA_k^\top$ and $A_k^\top A_k$ are symmetric positive semidefinite matrices of rank $k$.
+                \begin{proof}
+                    Take $A_k A_k^\top = U_k \Sigma_k^2 U_k^\top.$
+                    \[
+                        (A_kA_k^\top)^\top = (U_k \Sigma_k^2 U_k^\top)^\top = U_k \Sigma_k^2 U_k^\top
+                    \]
+                    
+                    Hence $A_kA_k^\top$ is symmetric.
+                    
+                    Similarly,
+                    $(A_k^\top A_k)^\top = A_k^\top A_k$,
+                    so both are symmetric.
+
+                    For any vector $x$,
+                \[
+                x^\top (A_kA_k^\top) x = (A_k^\top x)^\top (A_k^\top x) = |A_k^\top x|^2 \ge 0.
+                \]
+                Therefore, $A_kA_k^\top$ is positive semidefinite.
+                \end{proof}
+
+
+            
+            Their eigenpairs are given directly by the truncated SVD: the columns $u_i$ of $U_k$ are eigenvectors of $A_kA_k^\top$ with eigenvalues $\sigma_i^2$; the columns $v_i$ of $V_k$ are eigenvectors of $A_k^\top A_k$ with the same eigenvalues $\sigma_i^2$s.
+            \begin{proof}
+                Multiplying $A_k A_k^\top$ by any left singular vector $u_i$:
+                \[
+                  A_k A_k^\top u_i ;=; U_k \Sigma_k^2 U_k^\top u_i.
+                \]
+
+                Because the columns $u_1,\dots,u_k$ are orthonormal, $U_k^\top u_i$ is the basis vector $e_i$. Thus
+              \[
+              A_k A_k^\top u_i = U_k \Sigma_k^2 e_i = \sigma_i^2 u_i.
+              \]
+              So each $u_i$ (for $i\le k$) is an eigenvector with eigenvalue $\sigma_i^2$.
+            \end{proof}
+
+        \end{enumerate}
+
+        
+
+\end{solution}
+
+\end{document}
